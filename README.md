@@ -1,2 +1,7 @@
-# eea.docker.matrix.riot
-Dockerfile for installation of riot.im for matrix open federated Instant Messaging and VoIP communication server.
+# docker-matrix-riot-web
+
+## Run
+
+```
+docker run -d -p 8080:80 -v /tmp/data:/data eeacms/matrix-riot-web
+```
