@@ -1,9 +1,10 @@
 FROM nginx:1.13.6-alpine
+LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 ARG RIOT_WEB_VERSION="0.13.4"
 
 RUN set -ex \
-    && apk add --update \
+    && apk add --no-cache \ 
         ca-certificates \
         openssl \
         bash \
@@ -14,7 +15,6 @@ RUN set -ex \
     && mkdir -p /var/www \
     && mv riot-v${RIOT_WEB_VERSION} /var/www/riot \
     && apk del ca-certificates openssl \
-    && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
 
 COPY default.conf /etc/nginx/conf.d/default.conf
