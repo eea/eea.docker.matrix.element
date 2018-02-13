@@ -8,6 +8,7 @@ Integration enabled by default.
 
 - [`latest` (*Dockerfile*)](https://github.com/eea/eea.docker.matrix.riot/blob/master/Dockerfile)
 - [`v0.13.4` (*Dockerfile*)](https://github.com/eea/eea.docker.matrix.riot/blob/v0.13.4/Dockerfile)
+- [`v0.13.5` (*Dockerfile*)](https://github.com/eea/eea.docker.matrix.riot/blob/v0.13.5/Dockerfile)
 
 ## Variables
 
