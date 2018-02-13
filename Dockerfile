@@ -1,7 +1,7 @@
 FROM nginx:1.13.6-alpine
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
-ARG RIOT_WEB_VERSION="0.13.4"
+ARG RIOT_WEB_VERSION="0.13.5"
 
 RUN set -ex \
     && apk add --no-cache \ 
