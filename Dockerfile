@@ -3,19 +3,41 @@ LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 ARG RIOT_WEB_VERSION="0.13.5"
 
+COPY themes/* /tmp/themes/
+
 RUN set -ex \
-    && apk add --no-cache \ 
+    && apk update \
+    && apk add --no-cache  \
+        curl \
+        git \
+        libevent \
+        libffi \
+        libjpeg-turbo \
+        libssl1.0 \
+        nodejs \
+        sqlite-libs \
         ca-certificates \
         openssl \
         bash \
-    && update-ca-certificates \
-    && cd /tmp \
-    && wget https://github.com/vector-im/riot-web/releases/download/v${RIOT_WEB_VERSION}/riot-v${RIOT_WEB_VERSION}.tar.gz \
-    && tar -xzvf riot-v${RIOT_WEB_VERSION}.tar.gz \
+        unzip \
+    && npm install -g webpack \
+    && curl -L https://github.com/vector-im/riot-web/archive/v${RIOT_WEB_VERSION}.zip -o v.zip \
+    && unzip v.zip \
+    && rm v.zip \
+    && mv riot-web-* /tmp/riot \
+    && cd /tmp/riot \
+    && npm install \
+    && rm -rf /tmp/riot/node_modules/phantomjs-prebuilt/phantomjs \
+    && mv /tmp/themes/* src/skins/vector/css/themes/ \
+    && npm run build  \
     && mkdir -p /var/www \
-    && mv riot-v${RIOT_WEB_VERSION} /var/www/riot \
-    && apk del ca-certificates openssl \
+    && mv /tmp/riot/webapp /var/www/riot \
+    && echo "$RIOT_WEB_VERSION" > /var/www/riot/version \
+    && update-ca-certificates \
+    && apk del ca-certificates openssl git unzip \
     && rm -rf /tmp/*
+
+
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
