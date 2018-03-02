@@ -4,6 +4,7 @@ LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 ARG RIOT_WEB_VERSION="0.13.5"
 
 COPY themes/* /tmp/themes/
+COPY html/* /tmp/html/
 
 RUN set -ex \
     && apk update \
@@ -29,6 +30,7 @@ RUN set -ex \
     && npm install \
     && rm -rf /tmp/riot/node_modules/phantomjs-prebuilt/phantomjs \
     && mv /tmp/themes/* src/skins/vector/css/themes/ \
+    && mv /tmp/html/home.html res/home.html \
     && npm run build  \
     && mkdir -p /var/www \
     && mv /tmp/riot/webapp /var/www/riot \
