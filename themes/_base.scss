@@ -127,3 +127,74 @@ $lightbox-border-color: #ffffff;
 
 // unused?
 $progressbar-color: #000;
+
+/* EEA Specific CSS */
+.mx_Login_create, .mx_Login_forgot, .mx_ServerConfig_selector, .mx_Login_type_dropdown {
+  display: none !important;
+}
+
+.mx_Login_type_label:after {
+ content: " your Eionet account";
+}
+
+.mx_Login_box {
+ background-image: url("https://www.eea.europa.eu/about-us/who/eea-logos/eea-logos-1/eea_uk.gif");
+ background-position: center top; /*Positioning*/
+ background-repeat: no-repeat; /*Prevent showing multiple background images*/
+}
+
+
+/* EEA Specific CSS 
+
+a:hover, a:link, a:visited {
+  color: #346f83;
+}
+
+.mx_HomePage_header {
+  display: block;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid rgba(0,0,0,.15);
+}
+
+.mx_HomePage_header::after {
+  content: url('https://www.eea.europa.eu/about-us/who/eea-logos/eealogo.gif');
+  display: block;
+  text-align: right;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+.mx_HomePage_logo {
+  display: none;
+}
+
+.mx_LeftPanel {
+  background: #006699!important;    
+  color: #fff;
+}
+.mx_LeftPanel input[type=password]::placeholder,
+.mx_LeftPanel input[type=text]::placeholder, 
+.mx_LeftPanel textarea::placeholder {
+  color: rgba(255,255,255,.6);
+}
+
+.mx_RoomTile_name {
+  color: inherit;
+}
+
+.mx_RoomSubList_label {
+  border-top-color: rgba(0,0,0,.15);
+  background: transparent;
+  color: #fff;
+}
+
+.mx_RoomDropTarget,
+.mx_RoomList_emptySubListTip {
+  background: rgba(255,255,255,.2);
+  border: 1px dashed rgba(255,255,255,.5);
+  color: #fff;
+}
+
+*/

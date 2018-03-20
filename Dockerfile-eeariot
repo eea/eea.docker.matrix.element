@@ -1,0 +1,24 @@
+FROM local/riotbase:v1.0
+LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
+
+COPY themes/* /tmp/themes/
+COPY html/* /tmp/html/
+
+RUN cd /tmp/riot \
+    && mv /tmp/themes/* src/skins/vector/css/themes/ \
+    && mv /tmp/html/home.html res/home.html \
+    && npm run build  \
+    && mkdir -p /var/www \
+    && mv /tmp/riot/webapp /var/www/riot \
+    && echo "$RIOT_WEB_VERSION" > /var/www/riot/version \
+    && update-ca-certificates \
+    && apk del ca-certificates openssl git unzip
+
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+EXPOSE 80
+
+STOPSIGNAL SIGTERM
+
+CMD ["nginx", "-g", "daemon off;"]
