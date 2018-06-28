@@ -14,6 +14,7 @@ Integration enabled by default.
 
 HOME_SERVER_URL: Matrix service URL
 IDENTITY_SERVER_URL: Matrix identity service URL
+BRAND: Brand name, default "Riot".
 
 ## Usage
 
