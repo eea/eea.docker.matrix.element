@@ -1,7 +1,7 @@
 FROM nginx:1.13.6-alpine
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
-ARG RIOT_WEB_VERSION="0.13.5"
+ARG RIOT_WEB_VERSION="0.15.6-rc.2"
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
@@ -29,11 +29,9 @@ RUN set -ex \
     && npm install \
     && rm -rf /tmp/riot/node_modules/phantomjs-prebuilt/phantomjs
 
-COPY themes/* /tmp/themes/
 COPY html/* /tmp/html/
 
 RUN cd /tmp/riot \
-    && mv /tmp/themes/* src/skins/vector/css/themes/ \
     && mv /tmp/html/home.html res/home.html \
     && npm run build  \
     && mkdir -p /var/www \
