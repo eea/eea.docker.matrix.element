@@ -1,23 +1,45 @@
 FROM nginx:1.13.12-alpine
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
-ARG RIOT_WEB_VERSION="0.15.1"
+ARG RIOT_WEB_VERSION="0.15.6-rc.2"
+
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 RUN set -ex \
+    && apk update \
     && apk add --no-cache \
+        curl \
+        git \
+        libevent \
+        libffi \
+        libjpeg-turbo \
+        libssl1.0 \
+        nodejs \
+        sqlite-libs \
         ca-certificates \
         openssl \
         bash \
-    && update-ca-certificates \
-    && cd /tmp \
-    && wget https://github.com/vector-im/riot-web/releases/download/v${RIOT_WEB_VERSION}/riot-v${RIOT_WEB_VERSION}.tar.gz \
-    && tar -xzvf riot-v${RIOT_WEB_VERSION}.tar.gz \
-    && mkdir -p /var/www \
-    && mv riot-v${RIOT_WEB_VERSION} /var/www/riot \
-    && apk del ca-certificates openssl \
-    && rm -rf /tmp/*
+        unzip \
+    && npm install -g webpack \
+    && curl -L https://github.com/vector-im/riot-web/archive/v${RIOT_WEB_VERSION}.zip -o v.zip \
+    && unzip v.zip \
+    && rm v.zip \
+    && mv riot-web-* /tmp/riot \
+    && cd /tmp/riot \
+    && npm install \
+    && rm -rf /tmp/riot/node_modules/phantomjs-prebuilt/phantomjs
 
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY html/* /tmp/html/
+
+RUN cd /tmp/riot \
+    && mv /tmp/html/home.html res/home.html \
+    && npm run build  \
+    && mkdir -p /var/www \
+    && mv /tmp/riot/webapp /var/www/riot \
+    && echo "$RIOT_WEB_VERSION" > /var/www/riot/version \
+    && update-ca-certificates \
+    && apk del ca-certificates openssl git unzip
+
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 EXPOSE 80
