@@ -20,6 +20,7 @@ RUN set -ex \
         openssl \
         bash \
         unzip \
+        npm \
     && npm install -g webpack \
     && curl -L https://github.com/vector-im/riot-web/archive/v${RIOT_WEB_VERSION}.zip -o v.zip \
     && unzip v.zip \
