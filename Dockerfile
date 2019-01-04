@@ -1,7 +1,7 @@
 FROM nginx:1-alpine
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
-ARG RIOT_WEB_VERSION="0.17.6"
+ARG RIOT_WEB_VERSION="0.17.8"
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
