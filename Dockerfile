@@ -13,7 +13,6 @@ RUN set -ex \
         libevent \
         libffi \
         libjpeg-turbo \
-        libssl1.0 \
         nodejs \
         sqlite-libs \
         ca-certificates \
