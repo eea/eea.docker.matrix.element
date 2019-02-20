@@ -1,7 +1,7 @@
 FROM nginx:1-alpine
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
-ARG RIOT_WEB_VERSION="0.17.9"
+ARG RIOT_WEB_VERSION="1.0.1"
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
@@ -37,7 +37,7 @@ RUN cd /tmp/riot \
     && npm run build  \
     && mkdir -p /var/www \
     && mv /tmp/riot/webapp /var/www/riot \
-    && mv /tmp/html/img/eea_logo.svg /var/www/riot/home/images/eea_logo.svg \
+    && mv /tmp/html/img/eea_logo.svg /var/www/riot/img/eea_logo.svg \
     && echo "$RIOT_WEB_VERSION" > /var/www/riot/version \
     && update-ca-certificates \
     && apk del ca-certificates openssl git unzip
