@@ -32,14 +32,15 @@ RUN set -ex \
 COPY html /tmp/html/
 
 RUN cd /tmp/riot \
-    && mv /tmp/html/home.html res/home.html \
+    && mv /tmp/html/welcome.html res/welcome.html \
+    && mv /tmp/html/img/eea_logo.svg res/welcome/images/eea_logo.svg \
     && npm run build  \
     && mkdir -p /var/www \
     && mv /tmp/riot/webapp /var/www/riot \
-    && mv /tmp/html/img/eea_logo.svg /var/www/riot/img/eea_logo.svg \
     && echo "$RIOT_WEB_VERSION" > /var/www/riot/version \
     && update-ca-certificates \
     && apk del ca-certificates openssl git unzip
+ 
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 

@@ -30,7 +30,6 @@ cat <<EOF > /var/www/riot/config.json
         "feature_pinning": "labs"
     },
     "default_federate": true,
-    "welcomePageUrl": "home.html",
     "default_theme": "dark",
     "roomDirectory": {
         "servers": [
