@@ -148,6 +148,9 @@ h1::after {
 .mx_Button_iconRoomDirectory {
     background-image: url('welcome/images/icon-room-directory.svg');
 }
+.mxcustom_help_text_row {
+    max-width: 400px;
+}
 
 </style>
 
@@ -157,27 +160,21 @@ h1::after {
     </a>
     <h1 class="mx_Header_title">Welcome to EEA Riot Chat <img height="100" alt="[EEA logo]" style="padding-left: 1px;vertical-align: middle" src="welcome/images/eea_logo.svg"></h1>
     <h4 class="mx_Header_subtitle">_t("Decentralised, encrypted chat &amp; collaboration powered by [matrix]")</h4>
+    <div class="mxcustom_help_text_row">
+    <p><strong>Riot facilitates real-time secure communication between EEA IT Consultants and EEA Staff.</strong></p>
+    </div>
     <div class="mx_ButtonGroup">
         <div class="mx_ButtonRow">
             <a href="#/login" class="mx_ButtonParent mx_ButtonSignIn mx_Button_iconSignIn">
-                <div class="mx_ButtonLabel">_t("Sign In")</div>
+                <div class="mx_ButtonLabel">Eionet _t("Sign In")</div>
             </a>
-        </div>
-        <!-- The comments below are meant to be used by Ansible as a quick way
-             to strip out the marked content when desired.
-             See https://github.com/vector-im/riot-web/issues/8622.
-             TODO: Convert to config option if possible. -->
-        <!-- BEGIN Ansible: Remove these lines when guest access is disabled -->
-        <div class="mx_ButtonRow">
-            <div>
-                <div class="mx_ButtonWrapperText">_t("Need help?")</div>
-                <a href="#/user/@riot-bot:matrix.org?action=chat" class="mx_ButtonParent mx_SecondaryButton mx_Button_iconHelp">
-                    <div class="mx_ButtonLabel">_t("Chat with Riot Bot")</div>
-                </a>
-            </div>
-            <div>
-            </div>
-        </div>
-        <!-- END Ansible: Remove these lines when guest access is disabled -->
+         </div>
     </div>
+         <br/>
+    <div class="mxcustom_help_text_row">
+    <p><strong>Don't have an account?</strong><br/>Contact helpdesk@eionet.europa.eu and CC your contact person at EEA.</p>
+    <p><strong>Lost password?</strong><br/>You can <a href="https://www.eionet.europa.eu/password-reset">reset your password</a></p>
+    </div>
+
+
 </div>
