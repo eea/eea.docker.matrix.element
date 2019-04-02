@@ -1,7 +1,7 @@
 FROM nginx:1-alpine
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
-ARG RIOT_WEB_VERSION="1.0.3"
+ARG RIOT_WEB_VERSION="1.0.6"
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
@@ -20,6 +20,7 @@ RUN set -ex \
         bash \
         unzip \
         npm \
+        yarn \
     && npm install -g webpack \
     && curl -L https://github.com/vector-im/riot-web/archive/v${RIOT_WEB_VERSION}.zip -o v.zip \
     && unzip v.zip \

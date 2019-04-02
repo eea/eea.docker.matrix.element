@@ -40,6 +40,9 @@ cat <<EOF > /var/www/riot/config.json
     "piwik": false,
     "enable_presence_by_hs_url": {
         "${HOME_SERVER_URL}": false
+    },
+    "settingDefaults": {
+        "promptBeforeInviteUnknownUsers": false
     }
 }
 
