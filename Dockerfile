@@ -1,4 +1,4 @@
-FROM vectorim/riot-web:v1.3.2
+FROM vectorim/riot-web:v1.5.0
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 
