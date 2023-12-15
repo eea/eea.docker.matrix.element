@@ -14,38 +14,54 @@ fi
 generate_config() {
 cat <<EOF > /app/config.json
 {
-    "default_hs_url": "${HOME_SERVER_URL}",
-    "default_is_url": "${IDENTITY_SERVER_URL}",
+    "default_server_config": {
+        "m.homeserver": {
+            "base_url": "${HOME_SERVER_URL}",
+            "server_name": "${DOMAIN}"
+        },
+        "m.identity_server": {
+            "base_url": "${IDENTITY_SERVER_URL}"
+        }
+    },
     "disable_custom_urls": false,
     "disable_guests": false,
     "disable_login_language_selector": false,
     "disable_3pid_login": false,
-    "brand": "Riot",
+    "brand": "Element",
     "integrations_ui_url": "https://scalar.vector.im/",
     "integrations_rest_url": "https://scalar.vector.im/api",
-    "integrations_jitsi_widget_url": "https://scalar.vector.im/api/widgets/jitsi.html",
-    "bug_report_endpoint_url": "https://riot.im/bugreports/submit",
-    "features": {
-        "feature_groups": "labs",
-        "feature_pinning": "labs"
-    },
+    "integrations_widgets_urls": [
+        "https://scalar.vector.im/_matrix/integrations/v1",
+        "https://scalar.vector.im/api",
+        "https://scalar-staging.vector.im/_matrix/integrations/v1",
+        "https://scalar-staging.vector.im/api",
+        "https://scalar-staging.riot.im/scalar/api"
+    ],
+    "default_country_code": "GB",
+    "show_labs_settings": false,
+    "features": {},
     "default_federate": true,
     "default_theme": "dark",
-    "roomDirectory": {
-        "servers": [
-            "${HOME_SERVER_URL}"
-        ]
+    "room_directory": {
+        "servers": ["matrix.org"]
     },
-    "welcomeUserId": "@riot-bot:matrix.org",
-    "piwik": false,
     "enable_presence_by_hs_url": {
-        "${HOME_SERVER_URL}": false
+        "https://matrix.org": false,
+        "https://matrix-client.matrix.org": false
     },
-    "settingDefaults": {
-        "promptBeforeInviteUnknownUsers": false
-    }
+    "setting_defaults": {
+        "breadcrumbs": true
+    },
+    "jitsi": {
+        "preferred_domain": "meet.element.io"
+    },
+    "element_call": {
+        "url": "https://call.element.io",
+        "participant_limit": 8,
+        "brand": "Element Call"
+    },
+    "map_style_url": "https://api.maptiler.com/maps/streets/style.json?key=fU3vlMsMn4Jb6dnEIFsx"
 }
-
 EOF
 }
 
