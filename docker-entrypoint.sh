@@ -60,8 +60,7 @@ cat <<EOF > /app/config.json
         "participant_limit": 8,
         "brand": "Element Call"
     },
-    "map_style_url": "https://api.maptiler.com/maps/streets/style.json?key=fU3vlMsMn4Jb6dnEIFsx",
-    "csp_extra_source": "${CSP_EXTRA_SOURCE}"
+    "map_style_url": "https://api.maptiler.com/maps/streets/style.json?key=fU3vlMsMn4Jb6dnEIFsx"
 }
 EOF
 }
