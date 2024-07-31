@@ -1,4 +1,4 @@
-FROM vectorim/element-web:v1.11.57
+FROM vectorim/element-web:v1.11.72
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 
